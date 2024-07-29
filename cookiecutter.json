@@ -1,0 +1,8 @@
+{
+    "rock_name": "foo",
+    "project_slug": "{{ cookiecutter.rock_name.lower().replace(' ', '-') + '-rocks' }}",
+    "rock_version": "1.0.0",
+    "rock_base": ["bare", "ubuntu@20.04", "ubuntu@22.04", "ubuntu@24.04"],
+    "rock_git_source": "https://github.com/foo/lish",
+    "rock_go_version": "go/1.22/stable"
+}

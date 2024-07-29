@@ -1,0 +1,37 @@
+# Copyright 2024 Canonical, Ltd.
+# See LICENSE file for licensing details
+
+name: {{cookiecutter.rock_name}}
+summary: {{cookiecutter.rock_name}} rock
+description: |
+    A rock containing {{cookiecutter.rock_name}}.
+license: Apache-2.0
+version: {{cookiecutter.rock_version}}
+
+base: {{cookiecutter.rock_base}}
+build-base: ubuntu@22.04
+run-user: _daemon_
+
+platforms:
+  amd64:
+  arm64:
+
+environment:
+  APP_VERSION: {{cookiecutter.rock_version}}
+
+parts:
+  build-{{cookiecutter.rock_name}}:
+    plugin: go
+    source: {{cookiecutter.rock_git_source}}
+    source-type: git
+    source-tag: v${CRAFT_PROJECT_VERSION}
+    source-depth: 1
+    build-snaps:
+      - {{cookiecutter.rock_go_version}}
+    build-environment:
+      - GOOS: linux
+      - GOARCH: $CRAFT_ARCH_BUILD_FOR
+    go-generate:
+      - ./cmd/{{cookiecutter.rock_name}}
+    organize:
+      bin/{{cookiecutter.rock_name}}: ./
