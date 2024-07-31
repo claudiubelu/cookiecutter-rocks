@@ -1,17 +1,10 @@
 {
-    "rock_name": "foo",
-    "project_slug": "{{ cookiecutter.rock_name.lower().replace(' ', '-') + '-rocks' }}",
-    "rock_version": "1.0.0",
-    "rock_base": ["bare", "ubuntu@20.04", "ubuntu@22.04", "ubuntu@24.04"],
-    "rock_git_source": "https://github.com/foo/lish",
-    "rock_go_version": "go/1.22/stable",
+    "project_slug": "foo-lish-rocks",
+    "project_description": "Project containing rocks for foo.",
+    "rocks": 1,
     "__prompts__": {
-        "rock_name": "What are you trying to rock? (no spaces)",
-	"project_slug": "Project name containing the rock",
-	"rock_version": "The version of the rock",
-	"rock_base": "Select the rock base image:",
-	"rock_git_source": "Where are we building the binary from?",
-	"rock_go_version": "Version of go needed for building"
-    },
-    "__safe_rock_name": "{{ cookiecutter.rock_name.lower().replace('-', '_') }}"
+	"project_slug": "Project name containing the rock(s)",
+	"project_description": "Describe the rock(s) project",
+	"rocks": "How many different rocks the project contains"
+    }
 }

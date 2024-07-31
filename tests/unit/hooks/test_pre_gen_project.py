@@ -16,17 +16,13 @@
 
 from unittest import mock
 
-import pre_gen_project
+from hooks import pre_gen_project
 
 
 @mock.patch("sys.exit", autospec=True)
-def test_verify_values(mock_exit):
-    for valid_name in ["foo", "foo_lish", "foo-lish", "f00-l1sh"]:
-        pre_gen_project.verify_rock_name(valid_name)
-        mock_exit.assert_not_called()
+def test_validate_number_of_rocks(mock_exit):
+    pre_gen_project.validate_number_of_rocks(1)
+    mock_exit.assert_not_called()
 
-    for invalid_name in ["f", "0foo", "-foo", "foo lish", " foo"]:
-        mock_exit.reset_mock()
-
-        pre_gen_project.verify_rock_name(invalid_name)
-        mock_exit.assert_called_once_with(42)
+    pre_gen_project.validate_number_of_rocks(0)
+    mock_exit.assert_called_once_with(42)

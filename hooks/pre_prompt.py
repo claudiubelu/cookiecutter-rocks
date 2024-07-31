@@ -16,23 +16,25 @@
 
 """
 In some cases, we need to bundle up multiple rocks in the same repository.
-We need to make sure that the number is valid.
+
+We need to know the location of the current cookiecutter template, to use
+the nested rock cookiecutter template later on.
 """
 
-import sys
+import json
+import os
 
 
-def validate_number_of_rocks(number_of_rocks):
-    # We can't have < 0 rocks.
-    if number_of_rocks < 1:
-        print(f"ERROR: What do you mean, '{number_of_rocks}' rocks? Why are you here?")
-        print("ERROR: What are you going to ask next, an imaginary number of rocks?")
-        print("ERROR: Or maybe a plain ol' imaginary rock?")
-        print("ERROR: GET THE ROCK OUT!")
-        sys.exit(42)
+def store_tmp_location():
+    """Store the current location on the cookiecutter template for later use."""
+    with open("cookiecutter.json") as f:
+        cookie_vars = json.load(f)
+
+    cookie_vars["_template_location"] = os.getcwd()
+
+    with open("cookiecutter.json", "w") as f:
+        f.write(json.dumps(cookie_vars))
 
 
 if __name__ == "__main__":
-    # We need this to know how many rocks to generate.
-    number_of_rocks = int("{{cookiecutter.rocks}}")
-    validate_number_of_rocks(number_of_rocks)
+    store_tmp_location()

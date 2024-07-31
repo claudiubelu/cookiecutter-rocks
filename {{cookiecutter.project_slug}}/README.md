@@ -1,3 +1,3 @@
-# {{cookiecutter.rock_name}}-rocks
+# {{cookiecutter.project_slug}}
 
-Rocks for {{cookiecutter.rock_name}}
+{{cookiecutter.project_description}}

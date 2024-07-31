@@ -1,0 +1,15 @@
+{
+    "rock_name": "foo",
+    "rock_version": "1.0.0",
+    "rock_base": ["bare", "ubuntu@20.04", "ubuntu@22.04", "ubuntu@24.04"],
+    "rock_git_source": "https://github.com/foo/lish",
+    "rock_go_version": "go/1.22/stable",
+    "__prompts__": {
+        "rock_name": "What are you trying to rock? (no spaces)",
+	"rock_version": "The version of the rock",
+	"rock_base": "Select the rock base image:",
+	"rock_git_source": "Where are we building the binary from?",
+	"rock_go_version": "Version of go needed for building"
+    },
+    "__safe_rock_name": "{{ cookiecutter.rock_name.lower().replace('-', '_') }}"
+}
