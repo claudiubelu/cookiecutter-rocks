@@ -19,6 +19,16 @@ platforms:
 environment:
   APP_VERSION: {{cookiecutter.rock_version}}
 
+# Services to be loaded by the Pebble entrypoint.
+services:
+  {{cookiecutter.rock_name}}:
+    summary: "{{cookiecutter.rock_name}} service"
+    override: replace
+    startup: enabled
+    command: "/{{cookiecutter.rock_name}}"
+    on-success: shutdown
+    on-failure: shutdown
+
 parts:
   build-{{cookiecutter.rock_name}}:
     plugin: go
