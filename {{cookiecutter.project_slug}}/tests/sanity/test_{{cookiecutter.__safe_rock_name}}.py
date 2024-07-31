@@ -10,7 +10,7 @@ ROCK_EXPECTED_FILES = [
 ]
 
 
-def test_{{cookiecutter.rock_name}}_rock():
+def test_{{cookiecutter.__safe_rock_name}}_rock():
     """Test {{cookiecutter.rock_name}} rock."""
     rock = env_util.get_build_meta_info_for_rock_version("{{cookiecutter.rock_name}}", "{{cookiecutter.rock_version}}", "amd64")
     image = rock.image
